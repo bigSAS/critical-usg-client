@@ -1,19 +1,15 @@
 <template>
   <q-page class="flex flex-center">
-<!--    <img-->
-<!--      alt="Quasar logo"-->
-<!--      src="~assets/quasar-logo-full.svg"-->
-<!--    >-->
-    <Foo/>
+    <LoginForm/>
   </q-page>
 </template>
 
 <script>
-  import Foo from '../components/Foo'
-export default {
-  name: 'PageIndex',
-  components: {
-    Foo
+  import LoginForm from '../components/auth/LoginForm'
+  export default {
+    name: 'PageIndex',
+    components: {
+      LoginForm
+    }
   }
-}
 </script>
