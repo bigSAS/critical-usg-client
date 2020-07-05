@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <q-icon name="warning" class="text-green" style="font-size: 20rem;" />
+    <LoginForm/>
   </q-page>
 </template>
 
@@ -8,7 +8,7 @@
   import LoginForm from '../components/auth/LoginForm'
 
   export default {
-    name: 'PageIndex',
+    name: 'Login',
     components: {
       LoginForm
     }

@@ -1,5 +1,5 @@
 <template>
-  <q-form @submit.prevent="submit" uid="login-form">
+  <q-form @submit.prevent="submit" uid="register-form">
     <div class="row" v-if="authError" style="margin-bottom: 10px;">
       <div class="col">
         <q-banner inline-actions rounded class="bg-red text-white text-center">
@@ -38,6 +38,21 @@
           :lazy-rules="true"
         />
       </div>
+      <div class="col-12 col-md-6">
+        <q-input
+          type="password"
+          uid="password"
+          ref="password"
+          label="Repeat password"
+          v-model.trim="password"
+          :disable="loading"
+          :rules="[val => !!val || 'Field is required']"
+          :error="passwordError !== null"
+          :error-message="passwordError"
+          :bottom-slots="true"
+          :lazy-rules="true"
+        />
+      </div>
     </div>
     <div class="row">
       <div class="col-8 offset-2">
@@ -46,18 +61,9 @@
           uid="submit-login-form"
           type="submit"
           color="primary"
-          label="Log in"
+          label="Register"
           :loading="loading"
         />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col text-center">
-        <p style="margin-top: 15px">Dont' have an account?
-          <span>
-            <router-link to="register" uid="register-link">Register here</router-link>
-          </span>
-        </p>
       </div>
     </div>
   </q-form>
@@ -68,7 +74,7 @@
   import { mapActions } from 'vuex'
 
   export default {
-    name: "LoginForm",
+    name: "RegisterForm",
     data() {
       return {
         loading: false,
@@ -85,29 +91,28 @@
         setUser: 'setUser'
       }),
       submit: function () {
-        this.authError = false
-        this.loading = true
-        this.emailError = null
-        this.passwordError = null
-        client.auth.authenticate(this.email, this.password).then(response => {
-          this.loading = false
-          console.log('login-form::submit ok ->', response)
-          const token = response.data.data.token
-          console.log('token', token)
-          window.localStorage.setItem('CUSG_TOKEN', token)
-          client.auth.getUserData().then(udataResponse => {
-            console.log('login-form::getUserData ok ->', udataResponse)
-            this.setUser(udataResponse.data.data)
-            this.$router.push('/')
-          })
-        }).catch(error => {
-          this.loading = false
-          console.log('login-form::submit err ->', error)
-            this.emailError = error.data.errors.find(e => e.name === 'email')?.message?? null
-            this.passwordError = error.data.errors.find(e => e.name === 'email')?.message?? null
-            this.authError = error.data.status === 'AUTH_ERROR'
-            this.authErrorMessage = this.authError ? 'Invalid credentials' : ''
-        })
+        // this.authError = false
+        // this.loading = true
+        // this.emailError = null
+        // this.passwordError = null
+        // client.auth.authenticate(this.email, this.password).then(response => {
+        //   this.loading = false
+        //   console.log('login-form::submit ok ->', response)
+        //   const token = response.data.data.token
+        //   console.log('token', token)
+        //   window.localStorage.setItem('CUSG_TOKEN', token)
+        //   client.auth.getUserData().then(udataResponse => {
+        //     console.log('login-form::getUserData ok ->', udataResponse)
+        //     this.setUser(udataResponse.data.data)
+        //   })
+        // }).catch(error => {
+        //   this.loading = false
+        //   console.log('login-form::submit err ->', error)
+        //     this.emailError = error.data.errors.find(e => e.name === 'email')?.message?? null
+        //     this.passwordError = error.data.errors.find(e => e.name === 'email')?.message?? null
+        //     this.authError = error.data.status === 'AUTH_ERROR'
+        //     this.authErrorMessage = this.authError ? 'Invalid credentials' : ''
+        // })
       },
       validateEmail: function(email) {
         const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
