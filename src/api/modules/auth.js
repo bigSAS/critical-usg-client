@@ -5,6 +5,10 @@ const authenticate = (email, password) => {
   return client.post('token-auth', { email, password }, { headers: getHeaders() })
 }
 
+const getUserData = () => {
+  return client.post('get-user-data', {}, { headers: getHeaders() })
+}
+
 const register = (email, password, passwordRepeat) => {
   const data = {
     email,
@@ -17,5 +21,6 @@ const register = (email, password, passwordRepeat) => {
 export default {
   getHeaders,
   authenticate,
-  register
+  register,
+  getUserData
 }
