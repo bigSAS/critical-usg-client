@@ -1,11 +1,5 @@
 import axios from 'axios';
-const DEBUG = true  // todo: read from env var
 
-const getBaseUrl = () => {
-  return DEBUG
-    ? 'http://localhost:5000/api/'
-    : '???' // todo: read from env var
-}
 
 const getRequestHeaders = () => {
   let headers = {
@@ -19,7 +13,7 @@ const getRequestHeaders = () => {
 }
 
 const cli = axios.create({
-  baseURL: getBaseUrl(),
+  baseURL: process.env.BACKEND_URL,
   timeout: 60000,
   headers: getRequestHeaders()
 })

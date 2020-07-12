@@ -14,8 +14,6 @@
         <q-toolbar-title>
           Critical USG
         </q-toolbar-title>
-
-<!--        <div>{{ userEmail }}</div>-->
       </q-toolbar>
     </q-header>
 
@@ -25,7 +23,7 @@
         :width="200"
         :breakpoint="400"
       >
-        <q-scroll-area :style="`height: calc(${user ? '100% - 150px' : '100% - 5px'}); ${user ? 'margin-top: 150px' : 'margin-top: 5px'}; border-right: 1px solid #ddd`">
+        <q-scroll-area :style="`height: calc(${user ? '100% - 150px' : '100% - 7px'}); ${user ? 'margin-top: 150px' : 'margin-top: 5px'}; border-right: 1px solid #ddd`">
           <q-list padding>
             <q-item
               clickable
@@ -141,6 +139,7 @@ export default {
       }
     },
     logout: function () {
+      window.localStorage.removeItem('CUSG_TOKEN')
       this.setUser(null)
       this.activeRoute = '/'
       this.$router.push('/')
