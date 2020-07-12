@@ -19,6 +19,22 @@ export default function (/* { ssrContext } */) {
     modules: {
       // example
     },
+    state: {
+      user: null
+    },
+    getters: {
+      user: state => state.user
+    },
+    mutations: {
+      setUser: (state, user) => {
+        state.user = user
+      }
+    },
+    actions: {
+      setUser: ({ commit, state }, user) => {
+        commit('setUser', user)
+      }
+    },
 
     // enable strict mode (adds overhead!)
     // for dev mode only

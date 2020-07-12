@@ -8,37 +8,94 @@
           round
           icon="menu"
           aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
+          @click="drawerOpen = !drawerOpen"
         />
 
         <q-toolbar-title>
-          Quasar App
+          Critical USG
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
     <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      content-class="bg-grey-1"
-    >
-      <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Essential Links
-        </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
+        v-model="drawerOpen"
+        show-if-above
+        :width="200"
+        :breakpoint="400"
+      >
+        <q-scroll-area :style="`height: calc(${user ? '100% - 150px' : '100% - 7px'}); ${user ? 'margin-top: 150px' : 'margin-top: 5px'}; border-right: 1px solid #ddd`">
+          <q-list padding>
+            <q-item
+              clickable
+              v-ripple
+              :active="'/' === activeRoute"
+              @click="goTo('/')"
+            >
+              <q-item-section avatar>
+                <q-icon name="home" />
+              </q-item-section>
+
+              <q-item-section>
+                Home
+              </q-item-section>
+            </q-item>
+            <q-item
+              clickable
+              v-ripple
+              :active="'instructions' === activeRoute"
+              @click="goTo('instructions')"
+            >
+              <q-item-section avatar>
+                <q-icon name="inbox" />
+              </q-item-section>
+
+              <q-item-section>
+                Instrukcje
+              </q-item-section>
+            </q-item>
+            <q-item
+              v-if="!user"
+              clickable
+              v-ripple
+              :active="'login' === activeRoute"
+              @click="goTo('login')"
+            >
+              <q-item-section avatar>
+                <q-icon name="login" color="green"/>
+              </q-item-section>
+
+              <q-item-section>
+                Login/register
+              </q-item-section>
+            </q-item>
+            <q-item
+              v-if="user"
+              clickable
+              v-ripple
+              :active="'logout' === activeRoute"
+              @click="logout()"
+            >
+              <q-item-section avatar>
+                <q-icon name="logout" color="red" />
+              </q-item-section>
+
+              <q-item-section>
+                Logout
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-scroll-area>
+
+        <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px" v-if="user">
+          <div class="absolute-bottom bg-transparent">
+            <q-avatar size="56px" class="q-mb-sm">
+              <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+            </q-avatar>
+            <div class="text-weight-bold">{{ user.username }}</div>
+            <div>{{ userEmail }}</div>
+          </div>
+        </q-img>
+      </q-drawer>
 
     <q-page-container>
       <router-view />
@@ -48,6 +105,7 @@
 
 <script>
 import EssentialLink from 'components/EssentialLink.vue'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'MainLayout',
@@ -55,54 +113,41 @@ export default {
   components: {
     EssentialLink
   },
-
   data () {
     return {
-      leftDrawerOpen: false,
-      essentialLinks: [
-        {
-          title: 'Docs',
-          caption: 'quasar.dev',
-          icon: 'school',
-          link: 'https://quasar.dev'
-        },
-        {
-          title: 'Github',
-          caption: 'github.com/quasarframework',
-          icon: 'code',
-          link: 'https://github.com/quasarframework'
-        },
-        {
-          title: 'Discord Chat Channel',
-          caption: 'chat.quasar.dev',
-          icon: 'chat',
-          link: 'https://chat.quasar.dev'
-        },
-        {
-          title: 'Forum',
-          caption: 'forum.quasar.dev',
-          icon: 'record_voice_over',
-          link: 'https://forum.quasar.dev'
-        },
-        {
-          title: 'Twitter',
-          caption: '@quasarframework',
-          icon: 'rss_feed',
-          link: 'https://twitter.quasar.dev'
-        },
-        {
-          title: 'Facebook',
-          caption: '@QuasarFramework',
-          icon: 'public',
-          link: 'https://facebook.quasar.dev'
-        },
-        {
-          title: 'Quasar Awesome',
-          caption: 'Community Quasar projects',
-          icon: 'favorite',
-          link: 'https://awesome.quasar.dev'
-        }
-      ]
+      drawerOpen: false,
+      activeRoute: '/'
+    }
+  },
+  computed: {
+    ...mapGetters({
+      user: 'user'
+    }),
+    userEmail: function () {
+      return this.user?.email ?? ''
+    }
+  },
+  methods: {
+    ...mapActions({
+      setUser: 'setUser'
+    }),
+    goTo: function (route) {
+      if (this.activeRoute !== route) {
+        this.activeRoute = route
+        this.$router.push(route)
+        this.drawerOpen = false
+      }
+    },
+    logout: function () {
+      window.localStorage.removeItem('CUSG_TOKEN')
+      this.setUser(null)
+      this.activeRoute = '/'
+      this.$router.push('/')
+      this.drawerOpen = false
+      this.$q.notify({
+        message: 'You have been logged out. Bye :)',
+        color: 'warning'
+      })
     }
   }
 }
