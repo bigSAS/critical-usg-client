@@ -9,9 +9,10 @@ const getUserData = () => {
   return client.post('get-user-data', {}, { headers: getHeaders() })
 }
 
-const register = (email, password, passwordRepeat) => {
+const register = (email, username, password, passwordRepeat) => {
   const data = {
     email,
+    username,
     password,
     'password_repeat': passwordRepeat
   }

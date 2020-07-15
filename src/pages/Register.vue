@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center">
+  <q-page>
     <RegisterForm/>
   </q-page>
 </template>
@@ -11,6 +11,9 @@
     name: "Register",
     components: {
       RegisterForm
+    },
+    beforeDestroy () {
+      this.$emit('close-drawer')
     }
   }
 </script>

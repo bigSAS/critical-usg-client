@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center">
+  <q-page>
     <LoginForm/>
   </q-page>
 </template>
@@ -11,6 +11,9 @@
     name: 'Login',
     components: {
       LoginForm
+    },
+    beforeDestroy () {
+      this.$emit('close-drawer')
     }
   }
 </script>

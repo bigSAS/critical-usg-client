@@ -36,7 +36,7 @@
               </q-item-section>
 
               <q-item-section>
-                Home
+                Strona główna
               </q-item-section>
             </q-item>
             <q-item
@@ -65,7 +65,7 @@
               </q-item-section>
 
               <q-item-section>
-                Login/register
+                Zaloguj
               </q-item-section>
             </q-item>
             <q-item
@@ -80,7 +80,7 @@
               </q-item-section>
 
               <q-item-section>
-                Logout
+                Wyloguj
               </q-item-section>
             </q-item>
           </q-list>
@@ -98,7 +98,7 @@
       </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <router-view  @close-drawer="drawerOpen = false"/>
     </q-page-container>
   </q-layout>
 </template>
@@ -132,10 +132,9 @@ export default {
       setUser: 'setUser'
     }),
     goTo: function (route) {
-      if (this.activeRoute !== route) {
+      if (this.$router.path !== route) {
         this.activeRoute = route
         this.$router.push(route)
-        this.drawerOpen = false
       }
     },
     logout: function () {
@@ -145,7 +144,7 @@ export default {
       this.$router.push('/')
       this.drawerOpen = false
       this.$q.notify({
-        message: 'You have been logged out. Bye :)',
+        message: 'Zostałeś wylogowany :)',
         color: 'warning'
       })
     }

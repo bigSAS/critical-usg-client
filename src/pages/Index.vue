@@ -11,6 +11,9 @@
     name: 'PageIndex',
     components: {
       LoginForm
+    },
+    beforeDestroy () {
+      this.$emit('close-drawer')
     }
   }
 </script>
