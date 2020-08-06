@@ -61,10 +61,11 @@ module.exports = function (/* ctx */) {
       // Options below are automatically set depending on the env, set them if you want to override
       // extractCSS: false,
       // https://quasar.dev/quasar-cli/handling-webpack
+      publicPath: 'https://sas-kodzi.pl/cusg',
       extendWebpack (cfg) {
       },
       env: {
-        BACKEND_URL: 'http://77.55.215.44:8088/api/', // todo: local debug override
+        BACKEND_URL: 'https://sas-kodzi.pl/cusg-server/api/', // todo: local debug override
       },
     },
 
