@@ -10,10 +10,10 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 RUN mkdir /opt/app
 COPY . /opt/app/
 WORKDIR /opt/app
+RUN mv quasar.conf.prod.js quasar.conf.js
 
 RUN npm install -g @quasar/cli@1.1.0
 RUN npm install && npm install --only=dev
-RUN npm rebuild node-sass
 RUN quasar build web
 
 RUN chown -R www-data:www-data /opt/app/dist/spa
