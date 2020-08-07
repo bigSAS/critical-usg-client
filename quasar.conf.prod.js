@@ -3,6 +3,11 @@
  * the ES6 features that are supported by your Node version. https://node.green/
  */
 
+const CUSG_BACKEND_URL = 'https://sas-kodzi.pl/cusg-server/api/'
+console.log('CUSG_BACKEND_URL', CUSG_BACKEND_URL)
+const CUSG_PUBLIC_PATH = 'https://sas-kodzi.pl/cusg'
+console.log('CUSG_PUBLIC_PATH', CUSG_PUBLIC_PATH)
+
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
 console.log('CUSG_BACKEND_URL', process.env.CUSG_BACKEND_URL)
@@ -62,11 +67,11 @@ module.exports = function (/* ctx */) {
       // Options below are automatically set depending on the env, set them if you want to override
       // extractCSS: false,
       // https://quasar.dev/quasar-cli/handling-webpack
-      publicPath: process.env.CUSG_PUBLIC_PATH,
+      publicPath: CUSG_PUBLIC_PATH,
       extendWebpack (cfg) {
       },
       env: {
-        BACKEND_URL: process.env.CUSG_BACKEND_URL
+        BACKEND_URL: CUSG_BACKEND_URL
       },
     },
 
