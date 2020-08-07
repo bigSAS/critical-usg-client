@@ -3,6 +3,9 @@ services:
   cusg-client-web:
     build:
       context: .
+      args:
+        CUSG_QUASAR_CONF_FILE: "${CUSG_QUASAR_CONF_FILE:-quasar.conf.prod.js}"
     image: critical-usg-client-web:${CUSG_VERSION:-latest}
     ports:
       - "${CUSG_PORT-9002}:80"
+

@@ -1,5 +1,7 @@
 FROM node:12.8.1-buster-slim
 
+ARG CUSG_QUASAR_CONF_FILE
+
 RUN apt-get update
 RUN apt-get install nginx -y
 
@@ -10,7 +12,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 RUN mkdir /opt/app
 COPY . /opt/app/
 WORKDIR /opt/app
-RUN mv $CUSG_QUASAR_CONF_FILE quasar.conf.js
+RUN mv ${CUSG_QUASAR_CONF_FILE} quasar.conf.js
 
 RUN npm install -g @quasar/cli@1.1.0
 RUN npm install && npm install --only=dev
