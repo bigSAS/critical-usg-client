@@ -12,7 +12,7 @@ pipeline {
   stages {
     stage('Build docker image') {
       steps {
-        sh 'docker-compose build cusg-client-web --build-arg CUSG_QUASAR_CONF_FILE=${CUSG_QUASAR_CONF_FILE}'
+        sh 'docker-compose build cusg-client-web'
       }
     }
 
