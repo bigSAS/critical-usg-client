@@ -18,7 +18,7 @@ pipeline {
 
     stage('Stop service') {
       steps {
-        sh 'docker-compose up'
+        sh 'docker-compose down'
       }
     }
 
@@ -32,7 +32,6 @@ pipeline {
   environment {
     CUSG_VERSION = '1.0.0'
     CUSG_PORT = '8089'
-    CUSG_BACKEND_URL = 'https://sas-kodzi.pl/cusg-server/api/'
-    CUSG_PUBLIC_PATH = 'https://sas-kodzi.pl/cusg'
+    CUSG_QUASAR_CONF_FILE = 'quasar.conf.prod.js'
   }
 }

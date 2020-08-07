@@ -6,6 +6,3 @@ services:
     image: critical-usg-client-web:${CUSG_VERSION:-latest}
     ports:
       - "${CUSG_PORT-9002}:80"
-    environment:
-      CUSG_BACKEND_URL: "${CUSG_BACKEND_URL:-https://sas-kodzi.pl/cusg-server/api/}"
-      CUSG_PUBLIC_PATH: "${CUSG_PUBLIC_PATH:-https://sas-kodzi.pl/cusg/api/}"
