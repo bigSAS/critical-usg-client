@@ -12,29 +12,27 @@ pipeline {
   stages {
     stage('Build docker image') {
       steps {
-        sh 'docker build -t $image_name .'
+        sh 'docker-compose build cusg-client-web'
       }
     }
 
-    stage('Stop + delete container') {
+    stage('Stop service') {
       steps {
-        sh 'docker stop $container_name || true'
-        sh 'docker rm $container_name || true'
+        sh 'docker-compose up'
       }
     }
 
-    stage('Run app') {
+    stage('Run service') {
       steps {
-        sh '''docker run -d --name $container_name  \\
--p $expose_on_port:80 \\
-$image_name'''
+        sh 'docker-compose up'
       }
     }
 
   }
   environment {
-    image_name = 'cusg-client-web-dev:latest'
-    expose_on_port = '8089'
-    container_name = 'cusg-client-web-dev'
+    CUSG_VERSION = '1.0.0'
+    CUSG_PORT = '8089'
+    CUSG_BACKEND_URL = 'https://sas-kodzi.pl/cusg-server/api/'
+    CUSG_PUBLIC_PATH = 'https://sas-kodzi.pl/cusg'
   }
 }

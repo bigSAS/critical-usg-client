@@ -5,7 +5,8 @@
 
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
-
+console.log('CUSG_BACKEND_URL', process.env.CUSG_BACKEND_URL)
+console.log('CUSG_PUBLIC_PATH', process.env.CUSG_PUBLIC_PATH)
 module.exports = function (/* ctx */) {
   return {
     // https://quasar.dev/quasar-cli/supporting-ts
@@ -61,11 +62,11 @@ module.exports = function (/* ctx */) {
       // Options below are automatically set depending on the env, set them if you want to override
       // extractCSS: false,
       // https://quasar.dev/quasar-cli/handling-webpack
-      publicPath: 'https://sas-kodzi.pl/cusg',
+      publicPath: process.env.CUSG_PUBLIC_PATH,
       extendWebpack (cfg) {
       },
       env: {
-        BACKEND_URL: 'https://sas-kodzi.pl/cusg-server/api/', // todo: local debug override
+        BACKEND_URL: process.env.CUSG_BACKEND_URL
       },
     },
 

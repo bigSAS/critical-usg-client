@@ -13,6 +13,7 @@ WORKDIR /opt/app
 
 RUN npm install -g @quasar/cli@1.1.0
 RUN npm install && npm install --only=dev
+RUN npm rebuild node-sass
 RUN quasar build web
 
 RUN chown -R www-data:www-data /opt/app/dist/spa
