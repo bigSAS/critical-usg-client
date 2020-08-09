@@ -30,7 +30,7 @@ pipeline {
 
   }
   environment {
-    CUSG_VERSION = '1.0.0'
+    CUSG_VERSION = '1.0.0-dev'
     CUSG_PORT = '8089'
     CUSG_QUASAR_CONF_FILE = 'quasar.conf.dev.js'
   }
