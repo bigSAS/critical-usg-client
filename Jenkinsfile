@@ -36,20 +36,20 @@ pipeline {
   }
 }
 
-def DEV_PORT = '8090'
-def PRD_PORT = '9002'
-def VERSION = '1.0.0'
-def DEV_CONF = 'quasar.conf.dev.js'
-def PRD_CONF = 'quasar.conf.prod.js'
+def devPort() { '8090' }
+def prdPort() { '9002' }
+def version() { '1.0.0' }
+def devConf() { 'quasar.conf.dev.js' }
+def prdConf() { 'quasar.conf.prod.js' }
 
 def getVer(branch) {
-  return branch == 'release/dev' ? VERSION + '-dev' : VERSION
+  return branch == 'release/dev' ? version() + '-dev' : version()
 }
 
 def getPort(branch) {
-  return branch == 'release/dev' ? DEV_PORT: PRD_PORT
+  return branch == 'release/dev' ? devPort() : prdPort()
 }
 
 def getConfFile(branch) {
-  return branch == 'release/dev' ? DEV_CONF: PRD_CONF
+  return branch == 'release/dev' ? devConf() : prdConf()
 }
