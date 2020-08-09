@@ -30,8 +30,21 @@ pipeline {
 
   }
   environment {
-    CUSG_VERSION = '1.0.0-dev'
-    CUSG_PORT = '8089'
-    CUSG_QUASAR_CONF_FILE = 'quasar.conf.dev.js'
+    CUSG_VERSION = getVer(env.BRANCH_NAME)
+    CUSG_PORT = getPort(env.BRANCH_NAME)
+    CUSG_QUASAR_CONF_FILE = getConfFile(env.BRANCH_NAME)
   }
+}
+
+def getVer(branch) {
+  def ver = '1.0.0'
+  return branch == 'release/dev' ? ver + '-dev' : ver
+}
+
+def getPort(branch) {
+  return branch == 'release/dev' ? '8089': '9002'
+}
+
+def getConfFile(branch) {
+  return branch == 'release/dev': 'quasar.conf.dev.js': 'quasar.conf.prod.js'
 }
