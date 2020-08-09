@@ -46,5 +46,5 @@ def getPort(branch) {
 }
 
 def getConfFile(branch) {
-  return branch == 'release/dev': 'quasar.conf.dev.js': 'quasar.conf.prod.js'
+  return branch == 'release/dev' ? 'quasar.conf.dev.js': 'quasar.conf.prod.js'
 }
