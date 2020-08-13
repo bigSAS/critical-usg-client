@@ -40,6 +40,21 @@
               </q-item-section>
             </q-item>
             <q-item
+              v-if="user && user.is_superuser"
+              clickable
+              v-ripple
+              :active="'admin' === activeRoute"
+              @click="goTo('admin')"
+            >
+              <q-item-section avatar>
+                <q-icon name="build" />
+              </q-item-section>
+
+              <q-item-section>
+                Zarządzaj
+              </q-item-section>
+            </q-item>
+            <q-item
               clickable
               v-ripple
               :active="'instructions' === activeRoute"
