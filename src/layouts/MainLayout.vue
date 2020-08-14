@@ -17,6 +17,7 @@
       </q-toolbar>
     </q-header>
 
+<!--    // todo: on mobile view -> as overlay :)-->
     <q-drawer
         v-model="drawerOpen"
         show-if-above
