@@ -1,5 +1,5 @@
 FROM node:12.8.1-buster-slim
-
+# todo: multistage from node -> build -> from nginx run
 ARG CUSG_QUASAR_CONF_FILE
 
 RUN apt-get update
@@ -8,6 +8,7 @@ RUN apt-get install nginx -y
 COPY nginx.default /etc/nginx/sites-available/default
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
+
 
 RUN mkdir /opt/app
 COPY . /opt/app/

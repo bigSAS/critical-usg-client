@@ -43,8 +43,8 @@
               v-if="user && user.is_superuser"
               clickable
               v-ripple
-              :active="'admin' === activeRoute"
-              @click="goTo('admin')"
+              :active="'/admin' === activeRoute"
+              @click="goTo('/admin')"
             >
               <q-item-section avatar>
                 <q-icon name="build" />
@@ -57,8 +57,8 @@
             <q-item
               clickable
               v-ripple
-              :active="'instructions' === activeRoute"
-              @click="goTo('instructions')"
+              :active="'/docs' === activeRoute"
+              @click="goTo('/docs')"
             >
               <q-item-section avatar>
                 <q-icon name="inbox" />
@@ -72,8 +72,8 @@
               v-if="!user"
               clickable
               v-ripple
-              :active="'login' === activeRoute"
-              @click="goTo('login')"
+              :active="'/login' === activeRoute"
+              @click="goTo('/login')"
             >
               <q-item-section avatar>
                 <q-icon name="login" color="green"/>
@@ -87,7 +87,7 @@
               v-if="user"
               clickable
               v-ripple
-              :active="'logout' === activeRoute"
+              :active="'/logout' === activeRoute"
               @click="logout()"
             >
               <q-item-section avatar>

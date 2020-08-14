@@ -27,7 +27,7 @@ export default {
     }
   },
   created() {
-    this.$router.push({path: 'admin/docs-admin'})
+    this.$router.push({path: '/admin/docs-admin'})
   }
 }
 </script>

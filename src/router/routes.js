@@ -4,11 +4,13 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index') },
+      { path: 'docs', component: () => import('pages/Docs') },
+      { path: 'docs/:docSlug', component: () => import('pages/DocDetails'), props: true },
       {
-        path: 'admin/', component: () => import('pages/Admin.vue'),
+        path: 'admin/', component: () => import('pages/Admin'),
         children: [
-          { path: 'docs-admin/', component: () => import('pages/DocsAdmin.vue') },
-          { path: 'docs-admin/new-doc', component: () => import('pages/DocsAdminNewDoc.vue') },
+          { path: 'docs-admin/', component: () => import('pages/DocsAdmin') },
+          { path: 'docs-admin/new-doc', component: () => import('pages/DocsAdminNewDoc') },
         ]
       },
 
