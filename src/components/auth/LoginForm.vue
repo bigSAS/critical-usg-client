@@ -22,6 +22,7 @@
               :error-message="emailError"
               :bottom-slots="true"
               :lazy-rules="true"
+              autofocus
             />
             <q-input
               type="password"

@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-3 offset-md-4 col-lg-3 offset-lg-4">
+      <div class="col-xs-12 col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
         <div class="q-ma-sm q-pa-sm">
           <q-page id="doc-details">
             <q-linear-progress
@@ -11,7 +11,7 @@
               color="purple"
               class="q-mt-sm" />
             <div v-else>
-              <h4>{{ doc.name }}</h4>
+              <div class="text-h4">{{ doc.name }}</div>
               <p>{{ doc.description }}</p>
               <DocPages :pages="doc.pages" />
             </div>
@@ -39,6 +39,9 @@ export default {
   },
   created() {
     this.getDoc()
+  },
+  beforeDestroy () {
+    this.$emit('close-drawer')
   },
   methods: {
     getDoc () {

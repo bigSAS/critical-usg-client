@@ -21,6 +21,9 @@ export default {
   components: {
     Navigation
   },
+  beforeDestroy () {
+    this.$emit('close-drawer')
+  },
   computed: {
     mainRoute() {
       return this.$route.path === '/admin'

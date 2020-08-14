@@ -147,7 +147,7 @@ export default {
       setUser: 'setUser'
     }),
     goTo: function (route) {
-      if (this.$router.path !== route) {
+      if (this.$route.path !== route) {
         this.activeRoute = route
         this.$router.push(route)
       }

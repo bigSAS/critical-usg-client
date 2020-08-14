@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-3 offset-md-4 col-lg-3 offset-lg-4">
+      <div class="col-xs-12 col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
         <div class="q-ma-sm q-pa-sm">
           <q-page id="docs-page">
             <DocsSearch @search="search"/>
@@ -40,6 +40,9 @@ export default {
       nextPage: null,
       prevPage: null
     }
+  },
+  beforeDestroy () {
+    this.$emit('close-drawer')
   },
   mounted() {
     this.getDocs()
