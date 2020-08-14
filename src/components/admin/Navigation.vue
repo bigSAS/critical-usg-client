@@ -1,11 +1,11 @@
 <template>
   <q-breadcrumbs id="admin-navigation">
-      <q-breadcrumbs-el
-        v-for="(route, i) in routes"
-        :key="i"
-        :label="route.label"
-        :to="route.path" />
-    </q-breadcrumbs>
+    <q-breadcrumbs-el
+      v-for="(route, i) in routes"
+      :key="i"
+      :label="route.label"
+      :to="route.path" />
+  </q-breadcrumbs>
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <template>
-  <div id="docs-admin-new-doc-page">
+  <q-page id="docs-admin-new-doc-page">
     <AddNewDocumentForm />
-  </div>
+  </q-page>
 </template>
 
 <script>

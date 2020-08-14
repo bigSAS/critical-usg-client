@@ -7,6 +7,7 @@
       type="text" maxlength="200"
       v-model.trim="name"
       uid="name"
+      :disable="loading"
       autofocus
       required />
     <q-input
@@ -15,6 +16,7 @@
       type="textarea"
       autogrow
       maxlength="500"
+      :disable="loading"
       v-model.trim="description"
       uid="description" />
     <div v-for="(page, i) in pages" :key="i">
@@ -23,19 +25,26 @@
         type="textarea"
         :label="`Strona ${i + 1}`"
         v-model.trim="page.md"
+        :disable="loading"
         required
         :uid="`page-${i + 1}`" />
-      <q-btn :uid="`rem-page-${i + 1}`" @click="remPage(i)" v-if="pages.length > 1">Usuń stronę {{i + 1}}</q-btn>
+      <q-btn flat color="red" :disable="loading" :uid="`rem-page-${i + 1}`" @click="remPage(i)" v-if="pages.length > 1">Usuń stronę {{i + 1}}</q-btn>
     </div>
-      <q-btn uid="add-page" @click="addPage()">Dodaj kolejną stronę</q-btn>
+      <q-btn flat :disable="loading" uid="add-page" @click="addPage()">Dodaj kolejną stronę</q-btn>
+      <div class="text-right">
+        <q-btn :disable="loading" :loading="loading" flat color="green-7" type="submit" uid="add-document">Dodaj dokument</q-btn>
+      </div>
   </q-form>
 </template>
 
 <script>
+import api  from "../../api"
+
 export default {
   name: "AddNewDocumentForm",
   data () {
     return {
+      loading: false,
       name: '',
       description: '',
       pages: [{
@@ -45,9 +54,35 @@ export default {
   },
   methods: {
     submit () {
+      this.loading = true
       console.log('submit AddNewDocumentForm')
-      // todo: submit doc . then -> submit pages (on page err -> delete doc)
-      // todo: err handling ss
+      const docData = {
+        name: this.name,
+        description: this.description
+      }
+      api.docs.addDoc(docData).then(response => {
+        console.log(response)
+        const docId = response.data.data.id
+        const docSlug = response.data.data.slug
+        let pages = this.pages.map(page => {
+          const pageData = {
+            document_id: docId,
+            md: page.md
+          }
+          return api.docs.addPage(pageData)
+        })
+        Promise.all(pages).then(responses => {
+          setTimeout(() => {
+            console.log(responses)
+            this.loading = false
+            this.$router.push({path: `/docs/${docSlug}`})
+          }, 500)
+
+        })
+      }).catch(error => {
+        console.log(error)
+        this.loading = false
+      })
     },
     addPage () {
       this.pages.push({

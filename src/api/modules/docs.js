@@ -14,7 +14,21 @@ const getDoc = ({slug}) => {
   return client.post(url, data, config)
 }
 
+const addDoc = (docData) => {
+  const url = 'instruction-documents/add-doc'
+  const config = { headers: getHeaders() }
+  return client.post(url, docData, config)
+}
+
+const addPage = (pageData) => {
+  const url = 'instruction-documents/add-page'
+  const config = { headers: getHeaders() }
+  return client.post(url, pageData, config)
+}
+
 export default {
   getDocs,
-  getDoc
+  getDoc,
+  addDoc,
+  addPage
 }

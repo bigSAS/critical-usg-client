@@ -11,8 +11,8 @@
               color="purple"
               class="q-mt-sm" />
             <div v-else>
-              <div class="text-h4">{{ doc.name }}</div>
-              <p>{{ doc.description }}</p>
+              <div class="text-h5">{{ doc.name }}</div><br>
+              <p>{{ doc.description }}</p><br>
               <DocPages :pages="doc.pages" />
             </div>
           </q-page>
@@ -48,6 +48,7 @@ export default {
       this.loading = true
       api.docs.getDoc({slug: this.docSlug}).then(response => {
         setTimeout(() => {
+          console.log(response.data)
           this.doc = response.data.data
           this.loading = false
         }, 500)
