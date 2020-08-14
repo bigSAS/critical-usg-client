@@ -3,7 +3,13 @@
       <div class="col-xs-12 col-sm-12 col-md-3 offset-md-4 col-lg-3 offset-lg-4">
         <div class="q-ma-sm q-pa-sm">
           <q-page id="doc-details">
-            <q-linear-progress indeterminate rounded track-color="orange" color="purple" class="q-mt-sm" v-if="loading"/>
+            <q-linear-progress
+              v-if="loading"
+              indeterminate
+              rounded
+              track-color="orange"
+              color="purple"
+              class="q-mt-sm" />
             <div v-else>
               <h4>{{ doc.name }}</h4>
               <p>{{ doc.description }}</p>
