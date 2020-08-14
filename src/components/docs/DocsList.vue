@@ -11,7 +11,7 @@
         </q-item-section>
         <q-item-section side top>
           <q-item-label caption>{{ doc.created.substr(0, 10) }}</q-item-label>
-          <q-icon name="star" color="yellow" />
+<!--          <q-icon name="star" color="yellow" />-->
         </q-item-section>
       </q-item>
   </q-list>
