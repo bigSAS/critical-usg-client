@@ -18,6 +18,7 @@
     </q-header>
 
 <!--    // todo: on mobile view -> as overlay :)-->
+<!--    //todo: add ver at the bottom-->
     <q-drawer
         v-model="drawerOpen"
         show-if-above
