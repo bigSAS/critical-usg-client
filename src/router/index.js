@@ -14,7 +14,7 @@ Vue.use(VueRouter)
  * with the Router instance.
  */
 
-export default function (/* { store, ssrContext } */) {
+export default function ({store}) {
   const Router = new VueRouter({
     scrollBehavior: () => ({ x: 0, y: 0 }),
     routes,
@@ -26,5 +26,16 @@ export default function (/* { store, ssrContext } */) {
     base: process.env.VUE_ROUTER_BASE
   })
 
+  Router.beforeEach((to, from, next) => {
+    if (to.path.indexOf('admin') >= 0) {
+      console.log('admin route!')
+      const user = store.getters.user
+      console.log('user', user)
+      if (!user || !user.is_superuser) {
+        next('/')
+      }
+    }
+    next()
+  })
   return Router
 }

@@ -16,14 +16,14 @@
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
-
     <q-drawer
-        v-model="drawerOpen"
-        show-if-above
-        :width="200"
-        :breakpoint="400"
+      v-model="drawerOpen"
+      show-if-above
+      :width="250"
+      :breakpoint="750"
       >
-        <q-scroll-area :style="`height: calc(${user ? '100% - 150px' : '100% - 7px'}); ${user ? 'margin-top: 150px' : 'margin-top: 5px'}; border-right: 1px solid #ddd`">
+        <q-scroll-area
+          :style="`height: calc(${user ? '100% - 150px' : '100% - 7px'}); ${user ? 'margin-top: 150px' : 'margin-top: 5px'}; border-right: 1px solid #ddd`">
           <q-list padding>
             <q-item
               clickable
@@ -40,10 +40,25 @@
               </q-item-section>
             </q-item>
             <q-item
+              v-if="user && user.is_superuser"
               clickable
               v-ripple
-              :active="'instructions' === activeRoute"
-              @click="goTo('instructions')"
+              :active="'/admin' === activeRoute"
+              @click="goTo('/admin')"
+            >
+              <q-item-section avatar>
+                <q-icon name="build" />
+              </q-item-section>
+
+              <q-item-section>
+                Zarządzaj
+              </q-item-section>
+            </q-item>
+            <q-item
+              clickable
+              v-ripple
+              :active="'/docs' === activeRoute"
+              @click="goTo('/docs')"
             >
               <q-item-section avatar>
                 <q-icon name="inbox" />
@@ -57,8 +72,8 @@
               v-if="!user"
               clickable
               v-ripple
-              :active="'login' === activeRoute"
-              @click="goTo('login')"
+              :active="'/login' === activeRoute"
+              @click="goTo('/login')"
             >
               <q-item-section avatar>
                 <q-icon name="login" color="green"/>
@@ -72,7 +87,7 @@
               v-if="user"
               clickable
               v-ripple
-              :active="'logout' === activeRoute"
+              :active="'/logout' === activeRoute"
               @click="logout()"
             >
               <q-item-section avatar>
@@ -81,6 +96,11 @@
 
               <q-item-section>
                 Wyloguj
+              </q-item-section>
+            </q-item>
+            <q-item>
+              <q-item-section class="text-right text-grey-6">
+                ver. {{ version }}
               </q-item-section>
             </q-item>
           </q-list>
@@ -106,6 +126,7 @@
 <script>
 import EssentialLink from 'components/EssentialLink.vue'
 import { mapGetters, mapActions } from 'vuex'
+import meta from '../meta'
 
 export default {
   name: 'MainLayout',
@@ -115,6 +136,7 @@ export default {
   },
   data () {
     return {
+      version: meta.version,
       drawerOpen: false,
       activeRoute: '/'
     }
@@ -132,7 +154,7 @@ export default {
       setUser: 'setUser'
     }),
     goTo: function (route) {
-      if (this.$router.path !== route) {
+      if (this.$route.path !== route) {
         this.activeRoute = route
         this.$router.push(route)
       }
