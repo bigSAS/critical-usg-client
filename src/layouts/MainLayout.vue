@@ -22,7 +22,8 @@
       :width="250"
       :breakpoint="750"
       >
-        <q-scroll-area :style="`height: calc(${user ? '100% - 150px' : '100% - 7px'}); ${user ? 'margin-top: 150px' : 'margin-top: 5px'}; border-right: 1px solid #ddd`">
+        <q-scroll-area
+          :style="`height: calc(${user ? '100% - 150px' : '100% - 7px'}); ${user ? 'margin-top: 150px' : 'margin-top: 5px'}; border-right: 1px solid #ddd`">
           <q-list padding>
             <q-item
               clickable
