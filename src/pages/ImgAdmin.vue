@@ -10,8 +10,8 @@
     />
     <q-btn flat color="green" @click="addFile">Dodaj obrazek</q-btn>
     <br>
-    (localdev)<a v-if="uploadedUrlLocalDev" target="_blank" :href="uploadedUrlLocalDev">{{ uploadedUrlLocalDev }}</a>
-    <br>
+<!--    (localdev)<a v-if="uploadedUrlLocalDev" target="_blank" :href="uploadedUrlLocalDev">{{ uploadedUrlLocalDev }}</a>-->
+<!--    <br>-->
     <a v-if="uploadedUrlProd" target="_blank" :href="uploadedUrlProd">{{ uploadedUrlProd }}</a>
   </div>
 </template>
@@ -31,7 +31,7 @@ export default {
       return this.uploaded ? process.env.BACKEND_URL + 'files/get/' + this.uploaded : null
     },
     uploadedUrlProd () {
-      return this.uploaded ? process.env.BACKEND_URL + 'files/' + this.uploaded : null
+      return this.uploaded ? process.env.BACKEND_URL + 'filez/' + this.uploaded : null
     }
   },
   methods: {
