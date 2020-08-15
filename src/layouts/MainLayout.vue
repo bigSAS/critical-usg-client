@@ -16,14 +16,11 @@
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
-
-<!--    // todo: on mobile view -> as overlay :)-->
-<!--    //todo: add ver at the bottom-->
     <q-drawer
-        v-model="drawerOpen"
-        show-if-above
-        :width="200"
-        :breakpoint="400"
+      v-model="drawerOpen"
+      show-if-above
+      :width="250"
+      :breakpoint="750"
       >
         <q-scroll-area :style="`height: calc(${user ? '100% - 150px' : '100% - 7px'}); ${user ? 'margin-top: 150px' : 'margin-top: 5px'}; border-right: 1px solid #ddd`">
           <q-list padding>
@@ -100,6 +97,11 @@
                 Wyloguj
               </q-item-section>
             </q-item>
+            <q-item>
+              <q-item-section class="text-right text-grey-6">
+                ver. {{ version }}
+              </q-item-section>
+            </q-item>
           </q-list>
         </q-scroll-area>
 
@@ -123,6 +125,7 @@
 <script>
 import EssentialLink from 'components/EssentialLink.vue'
 import { mapGetters, mapActions } from 'vuex'
+import meta from '../meta'
 
 export default {
   name: 'MainLayout',
@@ -132,6 +135,7 @@ export default {
   },
   data () {
     return {
+      version: meta.version,
       drawerOpen: false,
       activeRoute: '/'
     }

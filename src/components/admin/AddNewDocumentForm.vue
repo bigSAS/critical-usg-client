@@ -24,7 +24,7 @@
         hint="markdown"
         type="textarea"
         :label="`Strona ${i + 1}`"
-        v-model.trim="page.md"
+        v-model="page.md"
         :disable="loading"
         required
         :uid="`page-${i + 1}`" />
