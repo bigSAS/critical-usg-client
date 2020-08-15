@@ -10,6 +10,7 @@ const routes = [
         path: 'admin/', component: () => import('pages/Admin'),
         children: [
           { path: 'docs-admin/', component: () => import('pages/DocsAdmin') },
+          { path: 'img-admin/', component: () => import('pages/ImgAdmin') },
           { path: 'docs-admin/new-doc', component: () => import('pages/DocsAdminNewDoc') },
         ]
       },

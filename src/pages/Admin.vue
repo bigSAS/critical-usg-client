@@ -9,7 +9,6 @@
                   <router-link to="/admin/docs-admin">Zarządzaj instrukcjami</router-link>
                 </li>
                 <li>
-        <!--          todo: endpoint na backend -> do media -> impl tu dodawanie-->
                   <router-link to="/admin/img-admin">Zarządzaj obrazkami</router-link>
                 </li>
               </ul>

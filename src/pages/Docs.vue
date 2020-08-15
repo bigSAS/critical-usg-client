@@ -36,7 +36,7 @@ export default {
       docs: [],
       total: 0,
       page: 1,
-      limit: 20,
+      limit: 200,
       nextPage: null,
       prevPage: null
     }

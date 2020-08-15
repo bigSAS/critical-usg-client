@@ -37,6 +37,10 @@ export default {
           'path': '/admin/docs-admin',
           'label': 'Administracja dokumentami',
         },
+        'img-admin': {
+          'path': '/admin/img-admin',
+          'label': 'Administracja obrazkami',
+        },
         'new-doc': {
           'path': '/admin/docs-admin/new-doc',
           'label': 'Dodaj dokument',

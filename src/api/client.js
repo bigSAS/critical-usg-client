@@ -21,7 +21,6 @@ const cli = axios.create({
 cli.interceptors.response.use(
   (okResponse) => okResponse,
   (error) => {
-    // todo: global err handling? => transofrm into {validationErrors: [], otherErrors[]}
     console.log('error response', error.response)
     return Promise.reject(error.response)
   }

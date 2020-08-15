@@ -1,5 +1,4 @@
 <template>
-<!--  todo: fix layout and buttons ;)-->
   <q-form id="add-new-document-form" @submit.prevent="submit">
     <q-input
       counter
