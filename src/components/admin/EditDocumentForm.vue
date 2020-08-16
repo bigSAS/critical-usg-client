@@ -3,8 +3,6 @@
     <q-select
         filled
         v-model="chosenDoc"
-        use-input
-        input-debounce="0"
         label="Wybierz dokument"
         :options="docs"
         option-label="name"
