@@ -44,6 +44,10 @@ export default {
         'new-doc': {
           'path': '/admin/docs-admin/new-doc',
           'label': 'Dodaj dokument',
+        },
+        'edit-doc': {
+          'path': '/admin/docs-admin/edit-doc',
+          'label': 'Edytuj dokument',
         }
       }[route]
     },
