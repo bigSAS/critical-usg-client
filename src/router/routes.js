@@ -12,6 +12,7 @@ const routes = [
           { path: 'docs-admin/', component: () => import('pages/DocsAdmin') },
           { path: 'img-admin/', component: () => import('pages/ImgAdmin') },
           { path: 'docs-admin/new-doc', component: () => import('pages/DocsAdminNewDoc') },
+          { path: 'docs-admin/edit-doc', component: () => import('pages/DocsAdminEditDoc') },
         ]
       },
 

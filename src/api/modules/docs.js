@@ -20,8 +20,20 @@ const addDoc = (docData) => {
   return client.post(url, docData, config)
 }
 
+const updateDoc = (docData) => {
+  const url = 'instruction-documents/update-doc'
+  const config = { headers: getHeaders() }
+  return client.post(url, docData, config)
+}
+
 const addPage = (pageData) => {
   const url = 'instruction-documents/add-page'
+  const config = { headers: getHeaders() }
+  return client.post(url, pageData, config)
+}
+
+const updatePage = (pageData) => {
+  const url = 'instruction-documents/update-page'
   const config = { headers: getHeaders() }
   return client.post(url, pageData, config)
 }
@@ -30,5 +42,7 @@ export default {
   getDocs,
   getDoc,
   addDoc,
-  addPage
+  updateDoc,
+  addPage,
+  updatePage
 }
