@@ -1,5 +1,5 @@
 <template>
-  <q-page id="docs-admin-edit-doc-page">
+  <q-page uid="docs-admin-edit-doc-page">
     <EditDocumentForm />
   </q-page>
 </template>

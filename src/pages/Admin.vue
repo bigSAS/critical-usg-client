@@ -6,7 +6,7 @@
             <div v-if="mainRoute">
               <ul>
                 <li>
-                  <router-link to="/admin/docs-admin">Zarządzaj instrukcjami</router-link>
+                  <router-link to="/admin/docs-admin">Zarządzaj dokumentami</router-link>
                 </li>
                 <li>
                   <router-link to="/admin/img-admin">Zarządzaj obrazkami</router-link>

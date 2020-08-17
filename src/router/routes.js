@@ -13,6 +13,7 @@ const routes = [
           { path: 'img-admin/', component: () => import('pages/ImgAdmin') },
           { path: 'docs-admin/new-doc', component: () => import('pages/DocsAdminNewDoc') },
           { path: 'docs-admin/edit-doc', component: () => import('pages/DocsAdminEditDoc') },
+          { path: 'docs-admin/delete-doc', component: () => import('pages/DocsAdminDeleteDoc') },
         ]
       },
 

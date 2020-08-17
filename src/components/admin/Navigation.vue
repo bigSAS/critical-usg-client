@@ -48,6 +48,10 @@ export default {
         'edit-doc': {
           'path': '/admin/docs-admin/edit-doc',
           'label': 'Edytuj dokument',
+        },
+        'delete-doc': {
+          'path': '/admin/docs-admin/delete-doc',
+          'label': 'Usuń dokument',
         }
       }[route]
     },

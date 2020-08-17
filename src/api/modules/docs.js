@@ -26,6 +26,12 @@ const updateDoc = (docData) => {
   return client.post(url, docData, config)
 }
 
+const deleteDoc = (docId) => {
+  const url = 'instruction-documents/delete-doc'
+  const config = { headers: getHeaders() }
+  return client.post(url, { document_id: docId }, config)
+}
+
 const addPage = (pageData) => {
   const url = 'instruction-documents/add-page'
   const config = { headers: getHeaders() }
@@ -44,5 +50,6 @@ export default {
   addDoc,
   updateDoc,
   addPage,
-  updatePage
+  updatePage,
+  deleteDoc
 }
