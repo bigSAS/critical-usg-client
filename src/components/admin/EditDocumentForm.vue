@@ -6,6 +6,8 @@
         label="Wybierz dokument"
         :options="docs"
         option-label="name"
+        :disable="loading"
+        :loading="loading"
       />
 
       <div class="row" v-if="docForEdit">
@@ -74,11 +76,15 @@ export default {
   },
   methods: {
     fetchDocs () {
-        api.docs.getDocs({
+      this.loading = true
+      api.docs.getDocs({
         page: 1,
         limit: 999
       }).then(response => {
-        this.docs = response.data.data.results
+        setTimeout(() => {
+          this.docs = response.data.data.results
+          this.loading = false
+        }, 500)
       })
     },
     submit () {
@@ -101,7 +107,6 @@ export default {
             console.log(responses)
             setTimeout(() => {
               this.fetchDocs()
-              this.loading = false
               this.chosenDoc = null
               this.docForEdit = null
             }, 500)

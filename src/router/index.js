@@ -19,9 +19,9 @@ export default function ({store}) {
     scrollBehavior: () => ({ x: 0, y: 0 }),
     routes,
 
-    // Leave these as they are and change in quasar.conf.js instead!
-    // quasar.conf.js -> build -> vueRouterMode
-    // quasar.conf.js -> build -> publicPath
+    // Leave these as they are and change in quasar.conf.dev.js instead!
+    // quasar.conf.dev.js -> build -> vueRouterMode
+    // quasar.conf.dev.js -> build -> publicPath
     mode: process.env.VUE_ROUTER_MODE,
     base: process.env.VUE_ROUTER_BASE
   })
