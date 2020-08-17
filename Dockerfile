@@ -5,8 +5,8 @@ RUN mkdir /opt/app
 COPY . /opt/app/
 WORKDIR /opt/app
 # conf
-RUN mv ${CUSG_QUASAR_CONF_FILE} quasar.conf.dev.js
-RUN cat quasar.conf.dev.js
+RUN mv ${CUSG_QUASAR_CONF_FILE} quasar.conf.js
+RUN cat quasar.conf.js
 
 RUN npm install -g @quasar/cli@1.1.0
 RUN npm install && npm install --only=dev
