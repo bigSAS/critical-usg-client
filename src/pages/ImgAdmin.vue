@@ -31,7 +31,7 @@ export default {
       return this.uploaded ? process.env.BACKEND_URL + 'files/get/' + this.uploaded : null
     },
     uploadedUrlProd () {
-      return this.uploaded ? process.env.BACKEND_URL + 'filez/' + this.uploaded : null
+      return this.uploaded ? process.env.BACKEND_URL.replace('api/', 'media/') + this.uploaded : null
     }
   },
   methods: {

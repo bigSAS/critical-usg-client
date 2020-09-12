@@ -36,7 +36,7 @@ pipeline {
   }
 }
 
-def devPort() { '8089' }
+def devPort() { '9002' }
 def prdPort() { '9002' }
 def version() { '1.0.0' }
 def devConf() { 'quasar.conf.dev.js' }
