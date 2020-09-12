@@ -3,25 +3,25 @@
  * the ES6 features that are supported by your Node version. https://node.green/
  */
 // local
-// const CUSG_BACKEND_URL = 'https://sas-kodzi.pl/cusg-server-dev/api/' // 'http://127.0.0.1:5000/api/'
-// console.log('CUSG_BACKEND_URL', CUSG_BACKEND_URL)
-// const CUSG_PUBLIC_PATH = '/'
-// console.log('CUSG_PUBLIC_PATH', CUSG_PUBLIC_PATH)
+const CUSG_BACKEND_URL = 'https://sas-kodzi.pl/cusg-server/api/'
+console.log('CUSG_BACKEND_URL', CUSG_BACKEND_URL)
+const CUSG_PUBLIC_PATH = 'https://sas-kodzi.pl/cusg'
+console.log('CUSG_PUBLIC_PATH', CUSG_PUBLIC_PATH)
 //
 // // Configuration for your app
 // // https://quasar.dev/quasar-cli/quasar-conf-js
 // console.log('CUSG_BACKEND_URL', process.env.CUSG_BACKEND_URL)
 // console.log('CUSG_PUBLIC_PATH', process.env.CUSG_PUBLIC_PATH)
 
-const CUSG_BACKEND_URL = 'https://sas-kodzi.pl/cusg-server-dev/api/'
-console.log('CUSG_BACKEND_URL', CUSG_BACKEND_URL)
-const CUSG_PUBLIC_PATH = 'https://sas-kodzi.pl/cusg-dev'
-console.log('CUSG_PUBLIC_PATH', CUSG_PUBLIC_PATH)
-
-// Configuration for your app
-// https://quasar.dev/quasar-cli/quasar-conf-js
-console.log('CUSG_BACKEND_URL', process.env.CUSG_BACKEND_URL)
-console.log('CUSG_PUBLIC_PATH', process.env.CUSG_PUBLIC_PATH)
+// const CUSG_BACKEND_URL = 'https://sas-kodzi.pl/cusg-server-dev/api/'
+// console.log('CUSG_BACKEND_URL', CUSG_BACKEND_URL)
+// const CUSG_PUBLIC_PATH = 'https://sas-kodzi.pl/cusg-dev'
+// console.log('CUSG_PUBLIC_PATH', CUSG_PUBLIC_PATH)
+//
+// // Configuration for your app
+// // https://quasar.dev/quasar-cli/quasar-conf-js
+// console.log('CUSG_BACKEND_URL', process.env.CUSG_BACKEND_URL)
+// console.log('CUSG_PUBLIC_PATH', process.env.CUSG_PUBLIC_PATH)
 
 module.exports = function (/* ctx */) {
   return {
