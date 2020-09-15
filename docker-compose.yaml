@@ -1,6 +1,6 @@
 version: "3"
 services:
-  cusg-client-web:
+  web-app:
     container_name: cusg-client-web 
     build:
       context: .
@@ -8,5 +8,4 @@ services:
         CUSG_QUASAR_CONF_FILE: "${CUSG_QUASAR_CONF_FILE:-quasar.conf.prod.js}"
     image: critical-usg-client-web:${CUSG_VERSION:-latest}
     ports:
-      - "${CUSG_PORT-9002}:80"
-
+      - ${CUSG_PORT-9002}:80 

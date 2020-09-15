@@ -11,20 +11,11 @@ RUN cat quasar.conf.js
 RUN npm install -g @quasar/cli@1.1.0
 RUN npm install && npm install --only=dev
 # rebuild sass on win
-#RUN npm rebuild node-sass
+# RUN npm rebuild node-sass
 RUN quasar build web
 
-FROM debian:buster-slim
-RUN apt-get update
-RUN apt-get install nginx -y
+FROM nginx:1.18-alpine
 
-COPY nginx.default /etc/nginx/sites-available/default
-RUN ln -sf /dev/stdout /var/log/nginx/access.log \
-    && ln -sf /dev/stderr /var/log/nginx/error.log
-
-RUN mkdir /opt/app
-COPY --from=builder /opt/app/dist /opt/app/dist
-RUN chown -R www-data:www-data /opt/app/dist/spa
-
+COPY --from=builder /opt/app/dist/spa /usr/share/nginx/html
+RUN cd /usr/share/nginx/html && ls -alh
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
