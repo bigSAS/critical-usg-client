@@ -12,7 +12,7 @@ pipeline {
   stages {
     stage('Build docker image') {
       steps {
-        sh 'docker-compose build cusg-client-web'
+        sh 'docker-compose build'
       }
     }
 
