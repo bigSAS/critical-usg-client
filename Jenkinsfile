@@ -24,7 +24,7 @@ pipeline {
 
     stage('Run service') {
       steps {
-        sh 'docker-compose up -d'
+        sh 'docker-compose up -d  --force-recreate'
       }
     }
 
@@ -49,7 +49,7 @@ def getEnv(branch) {
 }
 
 def getAppDir(branch) {
-  return branch == 'release/prod' ? '/': '/cusg'
+  return branch == 'release/prod' ? '/': '/'
 }
 
 def getVer(branch) {
