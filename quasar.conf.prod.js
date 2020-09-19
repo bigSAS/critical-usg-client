@@ -3,9 +3,9 @@
  * the ES6 features that are supported by your Node version. https://node.green/
  */
 
-const CUSG_BACKEND_URL = 'https://sas-kodzi.pl/cusg-server/api/'
+const CUSG_BACKEND_URL = 'https://sas-kodzi.pl/cusg-server/api/' // todo: prod api url
 console.log('CUSG_BACKEND_URL', CUSG_BACKEND_URL)
-const CUSG_PUBLIC_PATH = 'https://sas-kodzi.pl/cusg'
+const CUSG_PUBLIC_PATH = '/'  // prd in root
 console.log('CUSG_PUBLIC_PATH', CUSG_PUBLIC_PATH)
 
 // Configuration for your app
