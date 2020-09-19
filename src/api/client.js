@@ -15,7 +15,7 @@ const getRequestHeaders = () => {
 const cli = axios.create({
   baseURL: process.env.BACKEND_URL,
   timeout: 60000,
-  headers: getRequestHeaders()
+  headers: getRequestHeaders()  // todo: test if nessesary
 })
 
 cli.interceptors.response.use(
