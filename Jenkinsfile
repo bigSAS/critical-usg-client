@@ -12,7 +12,7 @@ pipeline {
   stages {
     stage('Build docker image') {
       steps {
-        sh "docker-compose build --build-arg CUSG_CONF_FILE=quasar.conf.${CUSG_ENV}.js --build-arg APP_DIR=${CUSG_APP_DIR}"
+        sh "docker-compose build --build-arg CUSG_CONF_FILE=quasar.conf.${CUSG_ENV}.js"
       }
     }
 
@@ -34,7 +34,6 @@ pipeline {
     CUSG_PORT = getPort(env.BRANCH_NAME)
     CUSG_QUASAR_CONF_FILE = getConfFile(env.BRANCH_NAME)
     CUSG_ENV = getEnv(env.BRANCH_NAME)
-    CUSG_APP_DIR = getAppDir(env.BRANCH_NAME)
   }
 }
 
@@ -46,10 +45,6 @@ def prdConf() { 'quasar.conf.prod.js' }
 
 def getEnv(branch) {
   return branch == 'release/prod' ? 'prod': 'dev'
-}
-
-def getAppDir(branch) {
-  return branch == 'release/prod' ? '/': '/'
 }
 
 def getVer(branch) {

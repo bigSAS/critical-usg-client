@@ -15,7 +15,6 @@ RUN npm install -g @quasar/cli@1.1.0 \
 RUN quasar build web
 
 FROM nginx:1.18-alpine
-ARG APP_DIR
 
-COPY --from=builder /opt/app/dist/spa /usr/share/nginx/html${APP_DIR}
+COPY --from=builder /opt/app/dist/spa /usr/share/nginx/html/
 EXPOSE 80
